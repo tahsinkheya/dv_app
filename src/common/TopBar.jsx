@@ -17,12 +17,30 @@ import CssBaseline from "@mui/material/CssBaseline";
 import logo from "../common/icons/DV LOGO 1-01.png";
 import { useNavigate } from "react-router-dom";
 import BasicMenu from "./MenuModal";
+import { makeStyles } from "@mui/styles";
 
 const pages = ["Firm", "Services", "Work", "People", "Career", "Contact"];
 const workMenu = ["Acoustic Design", "Interior Design", "Architecture"];
+const useStyles = makeStyles(() => ({
+  button: {
+  
+    display: "block",
+    cursor: "pointer", height:"3rem",
+    // marginTop:"2rem",
+    "&:hover": {
+      color: "red",
+      // color: colors.buttonText,
+    },
+    "&:disabled": {
+      // backgroundColor: colors.disabled,
+    },
+  },
+}));
 
 function TopBar() {
   let history = useNavigate();
+  const classes = useStyles();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [openMenu, setOpenMenu] = React.useState(false);
@@ -158,7 +176,7 @@ function TopBar() {
                   <Button
                     key={page}
                     onClick={(event) => handleClicked(event, page)}
-                    sx={{ my: 2, display: "block" }}
+                    className={classes.button}
                   >
                     {page}
                   </Button>
