@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import image1 from "../common/images/1/1.jpg";
 import image2 from "../common/images/2/1.jpg";
@@ -10,7 +10,8 @@ import image7 from "../common/images/7/1.jpeg";
 import image8 from "../common/images/8/1.jpg";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
-
+import firestore from "../common/firebaseConf";
+import { useEffect } from "react";
 const useStyles = makeStyles(() => ({
   dispImage: {
     width: window.innerWidth > 700 ? "31vw" : "90vw",
@@ -38,47 +39,61 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Acoustic = () => {
+  // const imageRef = firestore.collection("Acoustics");
+  const [imageUrls, setImages] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [name, setName] = useState([]);
   const classes = useStyles();
   let history = useNavigate();
+  useEffect(() => {
+    setLoading(true);
+    getImages();
+  }, []);
+  const getImages = async () => {
+    let newList = [];
+    let nameList = [];
+    await firestore
+      .collectionGroup("images")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          console.log(doc.data()[1]);
+          newList.push(doc.data()[1]);
+        });
+        setLoading(false);
+        setImages(newList);
+      });
+    setLoading(true);
+    await firestore
+      .collection("Acoustics")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          nameList.push(doc.data().name);
+        });
+        setLoading(false);
+        setName(nameList);
+      });
+  };
+  console.log(imageUrls);
+  // let snapshot = await firebase.firestore()
+  // .collection('route')
+  // .doc('0bayKbCiAchc0Vy9XuxT')
+  // .collection('qa')
+  // .get()
 
-  // <img src={images["0.png"]} />;
-  // openFiles(getPath);
-
-  //but if your goal is just to print the file name you can do this
-  // fs.readFileSync(".levels/").forEach(console.log);
-
-  //   // Our starting point
-  //   try {
-  //     // Get the files as an array
-  //     const files = await fs.promises.readdir(getPath);
-
-  //     // Loop them all with the new for...of
-  //     for (const file of files) {
-  //       // Get the full paths
-  //       const getPath = path.join(getPath, file);
-  //       // const toPath = path.join(moveTo, file);
-
-  //       // Stat the file to see if we have a file or dir
-  //       const stat = await fs.promises.stat(fromPath);
-
-  //       if (stat.isFile()) console.log("'%s' is a file.", fromPath);
-  //       else if (stat.isDirectory())
-  //         console.log("'%s' is a directory.", fromPath);
-
-  //       // Now move async
-  //       await fs.promises.rename(fromPath, toPath);
-
-  //       // Log because we're crazy
-  //       console.log("Moved '%s'->'%s'", fromPath, toPath);
-  //     } // End for...of
-  //   } catch (e) {
-  //     // Catch anything bad that happens
-  //     console.error("We've thrown! Whoops!", e);
-  //   }
-
+  // snapshot.forEach(doc =>{
+  //   console.log('hello', doc.data())
+  // })
   return (
-    <div style={{ paddingLeft: "1rem" }}>
+    <div style={{ paddingLeft: "1rem", textAlign: "center" }}>
       <h1>Acoustic Design</h1>
+      <img
+        style={{ height: "5rem", display: isLoading ? "inline" : "none" }}
+        src={
+          "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/loader%2F4ec18efab377896244ec49f7d42f70-unscreen.gif?alt=media&token=53491c34-276d-49d7-81ec-417121c74d30"
+        }
+      ></img>
       <Grid
         container
         direction="row"
@@ -89,20 +104,22 @@ const Acoustic = () => {
           // alignItems: "center",
         }}
       >
-        <Grid item xs={12} sm={12} md={4}>
-          <img
-            className={classes.dispImage}
-            src={image1}
-            // title="Bangladesh College of Physicians and Surgeons"
-            onClick={() => {
-              history("?proj=1");
-            }}
-          ></img>
-          <div className="overlay">
-            <div className="text">Hello World</div>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={12} md={4}>
+        {imageUrls.map((value, key) => (
+          <Grid item xs={12} sm={12} md={4}>
+            <img
+              className={classes.dispImage}
+              src={value}
+              // title="Bangladesh College of Physicians and Surgeons"
+              onClick={() => {
+                history("?proj=1");
+              }}
+            ></img>
+            <div className="overlay">
+              <div className="text">{name[key]}</div>
+            </div>
+          </Grid>
+        ))}
+        {/* <Grid item xs={12} sm={12} md={4}>
           <img
             className={classes.dispImage}
             src={image2}
@@ -149,8 +166,8 @@ const Acoustic = () => {
             className={classes.dispImage}
             src={image8}
             title="University Of Science & Technology Chattogram"
-          ></img>
-        </Grid>
+          ></img> */}
+        {/* </Grid> */}
       </Grid>
     </div>
   );
