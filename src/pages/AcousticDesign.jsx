@@ -11,6 +11,8 @@ import image8 from "../common/images/8/1.jpg";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
 import firestore from "../common/firebaseConf";
+import Skeleton from '@mui/material/Skeleton';
+
 import { useEffect } from "react";
 const useStyles = makeStyles(() => ({
   dispImage: {
@@ -75,7 +77,6 @@ const Acoustic = () => {
         setName(nameList);
       });
   };
-  console.log(imageUrls);
   // let snapshot = await firebase.firestore()
   // .collection('route')
   // .doc('0bayKbCiAchc0Vy9XuxT')
