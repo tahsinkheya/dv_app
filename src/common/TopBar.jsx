@@ -18,14 +18,15 @@ import logo from "../common/icons/DV LOGO 1-01.png";
 import { useNavigate } from "react-router-dom";
 import BasicMenu from "./MenuModal";
 import { makeStyles } from "@mui/styles";
+import { WindowRounded } from "@mui/icons-material";
 
 const pages = ["Firm", "Services", "Work", "People", "Career", "Contact"];
 const workMenu = ["Acoustic Design", "Interior Design", "Architecture"];
 const useStyles = makeStyles(() => ({
   button: {
-  
     display: "block",
-    cursor: "pointer", height:"3rem",
+    cursor: "pointer",
+    height: "3rem",
     // marginTop:"2rem",
     "&:hover": {
       color: "red",
@@ -80,55 +81,38 @@ function TopBar() {
       <AppBar
         position="sticky"
         style={{
-          background: "lightgrey",
+          background: "lightgray",
           opacity: 0.5,
           marginTop: "0px",
           paddingTop: "0px",
+          // backgroundColor: "blue",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <CssBaseline />
-        <Container maxWidth>
-          <Grid
-            container
-            direction="row"
-            style={{
-              display: "flex",
-              // justifyContent: "center",
-              // alignItems: "center",
-            }}
-          >
-            <Grid item xs={4} sm={4} md={4}>
-              <img
-                style={{
-                  height: "50px",
-                  width: "50px",
-                  paddingTop: "0.5rem",
-                  opacity: 1,
-                }}
-                src={logo}
-              ></img>
-              {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' } }} /> */}
-              {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-            //   mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-            //   color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography> */}
-            </Grid>
+        <Container
+          maxWidth
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <div style={{ width: "50%", textAlign: "left" }}>
+            <img
+              style={{
+                height: "50px",
+                width: "50px",
+                paddingTop: "0.5rem",
+                opacity: 1,
+                // position: "absolute",
+                left: "10px",
+              }}
+              src={logo}
+            ></img>
+          </div>
 
-            {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}> */}
-            {/* <IconButton
+          {/* </Grid> */}
+
+          {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}> */}
+          {/* <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -138,7 +122,7 @@ function TopBar() {
             >
               <MenuIcon />
             </IconButton> */}
-            {/* <Menu
+          {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -162,27 +146,41 @@ function TopBar() {
                 </MenuItem>
               ))}
             </Menu> */}
-            {/* </Box> */}
-            {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-            <Grid item xs={3} sm={3} md={3}></Grid>
-            <Grid item xs={5} sm={5} md={5} style={{ textAlign: "right" }}>
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: { xs: "none", md: "flex", textAlign: "right" },
-                }}
-              >
-                {pages.map((page) => (
-                  <Button
-                    key={page}
-                    onClick={(event) => handleClicked(event, page)}
-                    className={classes.button}
-                  >
-                    {page}
-                  </Button>
-                ))}
-              </Box>
-            </Grid>
+          {/* </Box> */}
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+          {/* <Grid item xs={3} sm={3} md={3}></Grid> */}
+          {/* <Grid item xs={5} sm={5} md={5} style={{ textAlign: "right" }}> */}
+          <div
+            style={{
+              width: "50%",
+              textAlign: "right",
+              display: "flex",
+              justifyContent: "end",
+              // backgroundColor: "pink",
+            }}
+          >
+            <Box
+              sx={{
+                // flexGrow: 1,
+                display: {
+                  xs: "none",
+                  md: "flex",
+                  textAlign: "right",
+                  width: "fit-content",
+                },
+              }}
+              style={{ right: "10px" }}
+            >
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={(event) => handleClicked(event, page)}
+                  className={classes.button}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -198,6 +196,9 @@ function TopBar() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
+              style={{
+                display: window.innerWidth > 500 ? "block" : "none",
+              }}
             >
               {workMenu.map((item) => (
                 <MenuItem
@@ -210,7 +211,10 @@ function TopBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Grid>
+          </div>
+          {/* </Grid> */}
+
+          {/* </Grid> */}
           {/* </Toolbar> */}
         </Container>
       </AppBar>

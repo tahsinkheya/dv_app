@@ -84,7 +84,7 @@ export default function SideBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", paddingBottom:"3.4rem" }}>
+    <Box sx={{ display: "flex", paddingBottom: "3.4rem" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -93,7 +93,7 @@ export default function SideBar(props: Props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar style={{ background: color.tobar,opacity:0.5 }}>
+        <Toolbar style={{ background: color.tobar, opacity: 0.5 }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"

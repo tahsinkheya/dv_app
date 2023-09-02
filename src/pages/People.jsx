@@ -24,7 +24,7 @@ function People() {
       });
   };
   return (
-    <div>
+    <div style={{ padding: "1rem" }}>
       <h1>It's Us</h1>
 
       <img
@@ -44,7 +44,18 @@ function People() {
         }}
       >
         {people.map((value, key) => (
-          <Grid item xs={12} sm={12} md={3}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
             <Card
               style={{
                 alignItems: "center",
@@ -53,6 +64,10 @@ function People() {
                 justifyContent: "center",
                 padding: "1rem 1rem 1rem 1rem",
                 boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+                borderRadius: "50%",
+                height: "13rem",
+                width: "13rem",
+                backgroundColor: "lightgray",
                 // width: "30rem",
               }}
             >
@@ -60,20 +75,20 @@ function People() {
               <img
                 //   className={classes.dispImage}
                 src={value.image}
-                style={{ height: "7rem", borderRadius: "5rem" }}
+                style={{ height: "7rem" }}
                 // title="Bangladesh College of Physicians and Surgeons"
               ></img>
-              <br></br>
-              <div style={{ textAlign: "center" }}>
-                <div
-                  className="text"
-                  style={{ fontSize: "1rem", fontWeight: "bolder" }}
-                >
-                  {value.name}
-                </div>
-                <Typography variant="overline">{value.position}</Typography>
-              </div>
             </Card>
+            <br></br>
+            <div style={{ textAlign: "center" }}>
+              <div
+                className="text"
+                style={{ fontSize: "1rem", fontWeight: "bolder" }}
+              >
+                {value.name}
+              </div>
+              <Typography variant="overline">{value.position}</Typography>
+            </div>
           </Grid>
         ))}
       </Grid>
