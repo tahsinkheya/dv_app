@@ -21,7 +21,7 @@ import { makeStyles } from "@mui/styles";
 import { WindowRounded } from "@mui/icons-material";
 
 const pages = ["Firm", "Services", "Work", "People", "Career", "Contact"];
-const workMenu = ["Acoustic Design", "Interior Design", "Architecture"];
+const workMenu = ["Architecture", "Interior Design", "Acoustic Design"];
 const useStyles = makeStyles(() => ({
   button: {
     display: "block",

@@ -1,13 +1,5 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
-import image1 from "../common/images/1/1.jpg";
-import image2 from "../common/images/2/1.jpg";
-import image3 from "../common/images/3/1.jpg";
-import image4 from "../common/images/4/1.jpg";
-import image5 from "../common/images/5/1.jpg";
-import image6 from "../common/images/6/1.jpg";
-import image7 from "../common/images/7/1.jpeg";
-import image8 from "../common/images/8/1.jpg";
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
 import firestore from "../common/firebaseConf";
@@ -71,24 +63,24 @@ const Acoustic = () => {
   const getImages = async () => {
     let newList = [];
     let nameList = [];
+    setLoading(true);
+
     await firestore
       .collectionGroup("images")
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          console.log(doc.data()[1]);
           newList.push(doc.data()[1]);
         });
         setLoading(false);
         setImages(newList);
       });
-    setLoading(true);
     await firestore
       .collection("Acoustics")
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          nameList.push(doc.data().name);
+          nameList.push({ name: doc.data().name, id: doc.id });
         });
         setLoading(false);
         setName(nameList);
@@ -159,12 +151,12 @@ const Acoustic = () => {
                     src={value}
                     // title="Bangladesh College of Physicians and Surgeons"
                     onClick={() => {
-                      history("?proj=1");
+                      history("/AcousticDesign?proj=" + name[key]?.id);
                     }}
                   ></img>
                 </div>
                 <div className="overlay" style={{ paddingTop: "0.3rem" }}>
-                  <div className="text">{name[key]}</div>
+                  <div className="text">{name[key]?.name}</div>
                 </div>
                 <p className={classes.readMore}> Read more</p>
               </div>

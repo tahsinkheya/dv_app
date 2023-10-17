@@ -8,6 +8,7 @@ import Acoustic from "./pages/AcousticDesign";
 import "firebase/compat/firestore";
 import { BrowserRouter } from "react-router-dom";
 import People from "./pages/People";
+import AcousticMain from "./components/accoustics/AcousticMain";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Firm" element={<Firm />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Acoustic" element={<Acoustic />} />
+        <Route path="/AcousticDesign" element={<AcousticMain />} />
         <Route path="/People" element={<People />} />
       </Routes>
     </BrowserRouter>
