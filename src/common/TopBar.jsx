@@ -20,7 +20,7 @@ import BasicMenu from "./MenuModal";
 import { makeStyles } from "@mui/styles";
 import { WindowRounded } from "@mui/icons-material";
 
-const pages = ["Firm", "Services", "Work", "People", "Career", "Contact"];
+const pages = ["Home", "Work" , "Services",  "Career", "Contact"];
 const workMenu = ["Architecture", "Interior Design", "Acoustic Design"];
 const useStyles = makeStyles(() => ({
   button: {

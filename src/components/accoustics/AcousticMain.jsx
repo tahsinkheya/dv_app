@@ -19,15 +19,23 @@ function AcousticMain() {
       .collectionGroup("images")
       .get()
       .then((querySnapshot) => {
+        console.log(querySnapshot.docs[0].data())
         querySnapshot.docs.forEach((doc) => {
-          if (id === doc.id) {
-            for (let i = 0; i < doc.data(); i++) {
-              imgList.push(doc.data()[i]);
-            }
+        console.log(id)
+        // console.log(doc)s
+        console.log(doc.ref.parent.parent.id)
+          if (id === doc.ref.parent.parent.id) {
+            console.log(doc.data())
+            imgList=doc.data()
+            // for (let i = 0; i < doc.data(); i++) {
+            //   imgList.push(doc.data()[i]);
+            //   console.log(doc.data()[i])
+            // }
           }
         });
         setLoading(false);
         setImages(imgList);
+        console.log(imgList[1])
       });
     await firestore
       .collection("Acoustics")
@@ -52,7 +60,7 @@ function AcousticMain() {
       });
   };
 
-  console.log(simProj);
+  
 
   return <div></div>;
 }
