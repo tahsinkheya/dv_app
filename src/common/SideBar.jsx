@@ -36,7 +36,8 @@ export default function SideBar(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const pages = ["Firm", "Services", "Work", "People", "Career", "Contact"];
+  // const pages = ["Firm", "Services", "Work", "People", "Career", "Contact"];
+  const pages = ["Home", "Work" , "Services",  "Career", "Contact"];
 
   const drawer = (
     <div>
