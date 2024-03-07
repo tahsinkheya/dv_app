@@ -49,7 +49,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Acoustic = () => {
+const Architecture = () => {
   // const imageRef = firestore.collection("Acoustics");
   const [imageUrls, setImages] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -58,6 +58,7 @@ const Acoustic = () => {
   let history = useNavigate();
   useEffect(() => {
     setLoading(true);
+    console.log("jsndjfk")
     getImages();
   }, []);
   const getImages = async () => {
@@ -66,7 +67,7 @@ const Acoustic = () => {
     setLoading(true);
 
     await firestore
-      .collectionGroup("images")
+      .collectionGroup("rimages")
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
@@ -76,7 +77,7 @@ const Acoustic = () => {
         setImages(newList);
       });
     await firestore
-      .collection("Acoustics")
+      .collection("Architecture")
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
@@ -86,15 +87,7 @@ const Acoustic = () => {
         setName(nameList);
       });
   };
-  // let snapshot = await firebase.firestore()
-  // .collection('route')
-  // .doc('0bayKbCiAchc0Vy9XuxT')
-  // .collection('qa')
-  // .get()
-
-  // snapshot.forEach(doc =>{
-  //   console.log('hello', doc.data())
-  // })
+ 
   return (
     <div
       style={{
@@ -115,7 +108,7 @@ const Acoustic = () => {
           flexDirection: "column",
         }}
       >
-        <h1>Acoustic Design</h1>
+        <h1>Architecture </h1>
         <img
           style={{ height: "5rem", display: isLoading ? "inline" : "none" }}
           src={
@@ -151,7 +144,7 @@ const Acoustic = () => {
                     src={value}
                     // title="Bangladesh College of Physicians and Surgeons"
                     onClick={() => {
-                      history("/AcousticDesign?proj=" + name[key]?.id);
+                      history("/ArchitectureDesign?proj=" + name[key]?.id);
                     }}
                   ></img>
                 </div>
@@ -217,4 +210,4 @@ const Acoustic = () => {
   );
 };
 
-export default Acoustic;
+export default Architecture;

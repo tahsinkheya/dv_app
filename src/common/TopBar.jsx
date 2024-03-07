@@ -63,8 +63,12 @@ function TopBar() {
 
   const subMenuClick = (item) => {
     handleCloseUserMenu();
+    console.log(item)
     if (item === "Acoustic Design") {
       history(`/Acoustic`);
+    }
+    else if (item == "Architecture"){
+      history(`/Architecture`)
     }
   };
   function handleClicked(e, page) {
