@@ -51,13 +51,15 @@ const Services = () => {
   //   );
   return (
     <div style={{}}>
-      <div>
-        <img
+      {loading?<img
           style={{ height: "5rem", display: loading ? "inline" : "none" }}
           src={
             "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/loader%2F4ec18efab377896244ec49f7d42f70-unscreen.gif?alt=media&token=53491c34-276d-49d7-81ec-417121c74d30"
           }
-        ></img>
+        ></img>:
+        <>
+      <div>
+        
         <ImageWithTextText
           text={"Services"}
           image={info?.mainImg}
@@ -237,7 +239,7 @@ const Services = () => {
           </Grid>
         </div>
       </div>
-      </div>
+      </div></>}
     </div>
   );
 };
