@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import firestore from "../../common/firebaseConf";
 import { Swiper, SwiperSlide } from "swiper/react"
 import Typography from "@mui/material/Typography";
+import { Divider, Grid } from "@mui/material";
 import "../../common/display.css"
 
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules"
@@ -16,7 +17,7 @@ function ArchitectureMain() {
   const [loading, setLoading] = useState([]);
   const [images, setImages] = useState([]);
   const [proj, setProj] = useState();
-
+console.log(proj)
   useEffect(() => {
     getDetails();
   }, []);
@@ -149,6 +150,35 @@ function ArchitectureMain() {
         ))}
       </Swiper>
     </div>
+    <Grid container   direction="row"
+  justifyContent="center" 
+  alignItems="stretch" style={{padding:"1rem", backgroundColor:"white"}}>
+              <Grid item xs={12} sm={12} lg={6} md={6} style={{backgroundColor:"", padding:"1rem"}}> 
+              <div style={{}}>
+                <p>Location: {proj?.location}</p>
+                <Divider></Divider>
+                <p>Market:{proj?.market} </p>
+                <Divider></Divider>
+
+                <Divider></Divider>
+                <p>Client: {proj?.client}</p>
+                <Divider></Divider>
+                
+                <p>Completion: {proj?.completion} </p>
+                <Divider></Divider>
+
+                </div></Grid>
+              <Grid item xs={12} sm={12} lg={6} md={6} style={{backgroundColor:"#FEC994", padding:"1rem"}}>
+
+                <div >
+                  <Typography variant="overline" style={{fontSize:"2rem"}}>{proj?.name}</Typography>
+                  <br></br>
+                  <Typography variant="subtitle">{proj?.subtitle}</Typography>
+                </div>
+              </Grid>
+            </Grid>
+
+            <div style={{padding:"1rem"}}><Divider><Typography variant="h2" style={{fontSize:"2.5rem"}}>Related Content</Typography></Divider></div>
   </div>
 </div>
   </div>;
