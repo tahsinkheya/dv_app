@@ -11,7 +11,7 @@ import People from "./pages/People";
 import AcousticMain from "./components/accoustics/AcousticMain";
 import ArchitectureMain from "./components/architecture/ArchitectureMain";
 import Architecture from "./pages/Architecture";
-
+import Career from "./pages/Career";
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +25,7 @@ function App() {
         <Route path="/ArchitectureDesign" element={<ArchitectureMain />} />
         <Route path="/AcousticDesign" element={<AcousticMain />} />
         <Route path="/People" element={<People />} />
+        <Route path="/Career" element={<Career />} />
       </Routes>
     </BrowserRouter>
   );

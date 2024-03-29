@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import firestore from "../common/firebaseConf";
 import { useEffect } from "react";
 import ImageWithTextText from "../common/ImageWithText";
-import { Grid, Typography } from "@mui/material";
+import { Divider, Grid, Typography } from "@mui/material";
+import { WindPower } from "@mui/icons-material";
 const Services = () => {
   const [loading, setLoading] = useState(true);
   const [info, setInfo] = useState([]);
@@ -50,15 +51,7 @@ const Services = () => {
   //   );
   return (
     <div style={{}}>
-      <div
-        style={
-          {
-            // paddingLeft: "1rem",
-          }
-        }
-      >
-        {/* <h1>Services</h1> */}
-
+      <div>
         <img
           style={{ height: "5rem", display: loading ? "inline" : "none" }}
           src={
@@ -70,52 +63,179 @@ const Services = () => {
           image={info?.mainImg}
         ></ImageWithTextText>
       </div>
-      <div style={{ maxWidth:"1200px"}}>
-      <div style={{ display:"flex", alignItems:"center", justifyContent:"center"}}>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="stretch" style={{backgroundColor:"pink"}}
+      <div style={{display:"flex", alignItems: "center",
+            justifyContent: "center",}}>
+      <div style={{ maxWidth: "1200px" }}>
+        <div
+          style={{
+            // display: "flex",
+           
+          }}
         >
           <Grid
-            item
-            xs={12}
-            sm={12}
-            lg={6}
-            md={6}
-            xl={6}
-            style={{ padding: "1rem", textAlign:"center"}}
+            container
+            direction={window.innerWidth>700?"row":"column"}
+            justifyContent="center"
+            alignItems="stretch" style={{paddingTop:"1rem"}}
           >
-            <Typography
-              variant="overline"
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={6}
+              md={6}
+              xl={6}
+              style={{ padding: "1rem", textAlign: "center" }}
+            >
+              <Typography
+                variant="overline"
+                style={{
+                  fontSize: window.innerWidth > 700 ? "1.5rem" : "0.8rem",
+                }}
+              >
+                {" "}
+                Architecture
+              </Typography>
+              <Typography variant="subtitle1" style={{ textAlign: "justify" }}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={6}
+              md={6}
+              xl={6}
               style={{
-                fontSize: window.innerWidth > 700 ? "1.5rem" : "0.8rem",
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              {" "}
-              Architecture
-            </Typography>
-            <Typography variant="subtitle1" style={{ textAlign: "justify" }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={6} md={6} xl={6} style={{display:"flex", textAlign:"center",justifyContent:"center", alignItems:"center"}}>
-       
-            <img style={{ width: "20vw" }} src={info.arch}></img>
+              <img style={{ width: window.innerWidth>700? "20vw":"80vw" }} src={info.arch}></img>
+            </Grid>
+            </Grid>
+            <Grid
+            container
+            direction={window.innerWidth>700?"row":"column-reverse"}
 
+            justifyContent="center"
+            alignItems="stretch" style={{paddingTop:"1rem"}}
+          >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={6}
+              md={6}
+              xl={6}
+              style={{
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img style={{ width: window.innerWidth>700? "20vw":"80vw" }} src={info.int}></img>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={6}
+              md={6}
+              xl={6}
+              style={{ padding: "1rem", textAlign: "center" }}
+            >
+              <Typography
+                variant="overline"
+                style={{
+                  fontSize: window.innerWidth > 700 ? "1.5rem" : "0.8rem",
+                }}
+              >
+                {" "}
+                Interior Design
+              </Typography>
+              <Typography variant="subtitle1" style={{ textAlign: "justify" }}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </Typography>
+            </Grid>
+            </Grid>
 
+            <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="stretch" style={{paddingTop:"1rem"}}
+          >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={6}
+              md={6}
+              xl={6}
+              style={{ padding: "1rem", textAlign: "center" }}
+            >
+              <Typography
+                variant="overline"
+                style={{
+                  fontSize: window.innerWidth > 700 ? "1.5rem" : "0.8rem",
+                }}
+              >
+                {" "}
+                Acoustic Design
+              </Typography>
+              <Typography variant="subtitle1" style={{ textAlign: "justify" }}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </Typography>
+            </Grid> <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={6}
+              md={6}
+              xl={6}
+              style={{
+                display: "flex",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img style={{ width: window.innerWidth>700? "20vw":"80vw" }} src={info.int}></img>
+            </Grid>
           </Grid>
-        </Grid>
+        </div>
       </div>
       </div>
     </div>
