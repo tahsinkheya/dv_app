@@ -16,8 +16,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   dispImage: {
-    width: window.innerWidth > 700 ? "18vw" : "90vw",
-    height: "23vh",
+    width: window.innerWidth > 700 ? "30vw" : "90vw",
+    height: "36vh",
     cursor: "pointer",
     "&:hover": {
       opacity: 0.4,
@@ -33,10 +33,10 @@ const useStyles = makeStyles(() => ({
         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
     },
     padding: window.innerWidth > 700 ? "0.2rem 1rem 0rem 1rem" : "0rem",
-    boxShadow:
-      window.innerWidth > 700
-        ? "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        : "",
+    // boxShadow:
+    //   window.innerWidth > 700
+    //     ? "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+    //     : "",
   },
   text: {
     color: "white",
@@ -108,7 +108,7 @@ const Acoustic = () => {
         style={{
           // paddingLeft: "1rem",
           textAlign: "center",
-          maxWidth: "1200px",
+          // maxWidth: "1200px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -125,7 +125,7 @@ const Acoustic = () => {
         <Grid
           container
           direction="row"
-          spacing={1}
+          // spacing={1}
           style={{
             display: "flex",
             // justifyContent: "center",

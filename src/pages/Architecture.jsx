@@ -16,8 +16,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   dispImage: {
-    width: window.innerWidth > 700 ? "18vw" : "90vw",
-    height: "23vh",
+    width: window.innerWidth > 700 ? "32vw" : "90vw",
+    height: "36vh",
     cursor: "pointer",
     "&:hover": {
       opacity: 0.4,
@@ -28,22 +28,22 @@ const useStyles = makeStyles(() => ({
     },
   },
   card: {
-    "&:hover": {
-      boxShadow:
-        "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-    },
-    padding: window.innerWidth > 700 ? "0.2rem 1rem 0rem 1rem" : "0rem",
-    boxShadow:
-      window.innerWidth > 700
-        ? "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
-        : "",
+    // "&:hover": {
+    //   boxShadow:
+    //     "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+    // },
+    // padding: window.innerWidth > 700 ? "0.2rem 1rem 0rem 1rem" : "0rem",
+    // boxShadow:
+    //   window.innerWidth > 700
+    //     ? "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
+    //     : "",
   },
   text: {
     color: "white",
     fontSize: "10px",
     position: "absolute",
     // paddingTop: "50%",
-    paddingLeft: "50%",
+    // paddingLeft: "50%",÷
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -71,7 +71,14 @@ const Architecture = () => {
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          newList.push(doc.data()[1]);
+          let x = doc.data()
+          try {
+            newList.push(x["cover"]);
+            
+          } catch (error) {
+            newList.push(x[0]);
+            
+          }
         });
         setLoading(false);
         setImages(newList);
@@ -94,14 +101,14 @@ const Architecture = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column",
+        flexDirection: "column"
       }}
     >
       <div
         style={{
           // paddingLeft: "1rem",
           textAlign: "center",
-          maxWidth: "1200px",
+          // maxWidth: "1200px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -117,22 +124,19 @@ const Architecture = () => {
         ></img>
         <Grid
           container
-          direction="row"
-          spacing={1}
-          style={{
-            display: "flex",
-            // justifyContent: "center",
-            // alignItems: "center",
-          }}
+  direction="row"
+  justifyContent="center"
+  alignItems="center"
+      
         >
           {imageUrls.map((value, key) => (
             <Grid item xs={12} sm={12} md={4}>
-              <div className={classes.card}>
+              <div className={classes.card} >
                 {" "}
                 <div
                   style={{
-                    padding:
-                      window.innerWidth > 700 ? "1rem 1rem 0rem 1rem" : "0rem",
+                    // padding:
+                    //   window.innerWidth > 700 ? "1rem 1rem 0rem 1rem" : "0rem",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -141,7 +145,7 @@ const Architecture = () => {
                 >
                   <img
                     className={classes.dispImage}
-                    src={value}
+                    src={value} 
                     // title="Bangladesh College of Physicians and Surgeons"
                     onClick={() => {
                       history("/ArchitectureDesign?proj=" + name[key]?.id);

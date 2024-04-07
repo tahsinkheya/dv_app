@@ -133,7 +133,8 @@ console.log(proj)
                         src={item}
                         style={{
                           // width: "60vw",
-                          width: "100vw",
+                          // width: "100vw",
+                          height:"94vh",
                         }}
                       />
                     </div>
