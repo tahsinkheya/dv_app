@@ -35,8 +35,9 @@ console.log(proj)
         // console.log(doc)s
         console.log(doc.ref.parent.parent.id)
           if (id === doc.ref.parent.parent.id) {
-            console.log(doc.data())
-            imgList=Object.values(doc.data())
+            let allData=doc.data()
+            imgList=Object.values(allData)
+            imgList.pop()
             // for (let i = 0; i < doc.data(); i++) {
             //   imgList.push(doc.data()[i]);
             //   console.log(doc.data()[i])
