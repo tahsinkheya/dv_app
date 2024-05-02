@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
 import firestore from "../common/firebaseConf";
 import Skeleton from "@mui/material/Skeleton";
+import { Typography } from "@mui/material";
 
 import { useEffect } from "react";
 const useStyles = makeStyles(() => ({
@@ -16,8 +17,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   dispImage: {
-    width: window.innerWidth > 700 ? "30vw" : "90vw",
-    height: "36vh",
+    width: window.innerWidth > 700 ? "23vw" : "90vw",
+    // height: "36vh",
     cursor: "pointer",
     "&:hover": {
       opacity: 0.4,
@@ -28,11 +29,11 @@ const useStyles = makeStyles(() => ({
     },
   },
   card: {
-    "&:hover": {
-      boxShadow:
-        "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-    },
-    padding: window.innerWidth > 700 ? "0.2rem 1rem 0rem 1rem" : "0rem",
+    // "&:hover": {
+    //   boxShadow:
+    //     "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+    // },
+    // padding: window.innerWidth > 700 ? "0.2rem 1rem 0rem 1rem" : "0rem",
     // boxShadow:
     //   window.innerWidth > 700
     //     ? "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"
@@ -70,7 +71,12 @@ const Acoustic = () => {
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          newList.push(doc.data()[1]);
+          let x = doc.data();
+          try {
+            newList.push(x["cover"]);
+          } catch (error) {
+            newList.push(x[0]);
+          }
         });
         setLoading(false);
         setImages(newList);
@@ -115,7 +121,9 @@ const Acoustic = () => {
           flexDirection: "column",
         }}
       >
-        <h1>Acoustic Design</h1>
+        <Typography variant="overline" style={{ fontSize: "2rem" }}>
+          Acoustic Design{" "}
+        </Typography>
         <img
           style={{ height: "5rem", display: isLoading ? "inline" : "none" }}
           src={
@@ -125,15 +133,12 @@ const Acoustic = () => {
         <Grid
           container
           direction="row"
+          justifyContent="center"
+          alignItems="center"
           // spacing={1}
-          style={{
-            display: "flex",
-            // justifyContent: "center",
-            // alignItems: "center",
-          }}
         >
           {imageUrls.map((value, key) => (
-            <Grid item xs={12} sm={12} md={4}>
+            <Grid item xs={12} sm={12} md={3}>
               <div className={classes.card}>
                 {" "}
                 <div

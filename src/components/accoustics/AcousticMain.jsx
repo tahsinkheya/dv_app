@@ -17,7 +17,7 @@ function AcousticMain() {
   const [loading, setLoading] = useState([]);
   const [images, setImages] = useState([]);
   const [proj, setProj] = useState();
-console.log(proj)
+  console.log(proj);
   useEffect(() => {
     getDetails();
   }, []);
@@ -134,7 +134,7 @@ console.log(proj)
                         style={{
                           // width: "60vw",
                           // width: "100vw",
-                          height:"94vh",
+                          height: "94vh",
                         }}
                       />
                     </div>
@@ -150,9 +150,7 @@ console.log(proj)
               ))}
             </Swiper>
           </div>
-          <div>
-          
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
