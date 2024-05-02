@@ -13,6 +13,7 @@ import ArchitectureMain from "./components/architecture/ArchitectureMain";
 import Architecture from "./pages/Architecture";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
+import Interior from "./pages/Interior";
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/AcousticDesign" element={<AcousticMain />} />
         <Route path="/People" element={<People />} />
         <Route path="/Career" element={<Career />} />
+        <Route path="/Interior" element={<Interior />} />
         <Route path="/Contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>

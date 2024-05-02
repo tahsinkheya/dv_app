@@ -20,7 +20,7 @@ import BasicMenu from "./MenuModal";
 import { makeStyles } from "@mui/styles";
 import { WindowRounded } from "@mui/icons-material";
 
-const pages = ["Home", "Work" , "Services",  "Career", "Contact"];
+const pages = ["Home", "Work", "Services", "Career", "Contact"];
 const workMenu = ["Architecture", "Interior Design", "Acoustic Design"];
 const useStyles = makeStyles(() => ({
   button: {
@@ -63,12 +63,13 @@ function TopBar() {
 
   const subMenuClick = (item) => {
     handleCloseUserMenu();
-    console.log(item)
+    console.log(item);
     if (item === "Acoustic Design") {
       history(`/Acoustic`);
-    }
-    else if (item == "Architecture"){
-      history(`/Architecture`)
+    } else if (item == "Architecture") {
+      history(`/Architecture`);
+    } else if (item == "Interior Design") {
+      history(`/Interior`);
     }
   };
   function handleClicked(e, page) {

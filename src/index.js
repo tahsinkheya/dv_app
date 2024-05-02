@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import TopBar from './common/TopBar';
 import SideBar from './common/SideBar';
+import "./style.css"
 // import MainPage from './pages/MainPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
