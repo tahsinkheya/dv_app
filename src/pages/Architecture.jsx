@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
 import firestore from "../common/firebaseConf";
 import Skeleton from "@mui/material/Skeleton";
-
+import { Typography } from "@mui/material";
 import { useEffect } from "react";
 const useStyles = makeStyles(() => ({
   readMore: {
@@ -16,8 +16,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   dispImage: {
-    width: window.innerWidth > 700 ? "32vw" : "90vw",
-    height: "36vh",
+    width: window.innerWidth > 700 ? "23vw" : "90vw",
+    // height: "36vh",
     cursor: "pointer",
     "&:hover": {
       opacity: 0.4,
@@ -58,7 +58,7 @@ const Architecture = () => {
   let history = useNavigate();
   useEffect(() => {
     setLoading(true);
-    console.log("jsndjfk")
+    console.log("jsndjfk");
     getImages();
   }, []);
   const getImages = async () => {
@@ -71,13 +71,11 @@ const Architecture = () => {
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          let x = doc.data()
+          let x = doc.data();
           try {
             newList.push(x["cover"]);
-            
           } catch (error) {
             newList.push(x[0]);
-            
           }
         });
         setLoading(false);
@@ -94,14 +92,14 @@ const Architecture = () => {
         setName(nameList);
       });
   };
- 
+
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column"
+        flexDirection: "column",
       }}
     >
       <div
@@ -115,7 +113,9 @@ const Architecture = () => {
           flexDirection: "column",
         }}
       >
-        <h1>Architecture </h1>
+        <Typography variant="overline" style={{ fontSize: "2rem" }}>
+          Architecture{" "}
+        </Typography>
         <img
           style={{ height: "5rem", display: isLoading ? "inline" : "none" }}
           src={
@@ -124,14 +124,13 @@ const Architecture = () => {
         ></img>
         <Grid
           container
-  direction="row"
-  justifyContent="center"
-  alignItems="center"
-      
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
         >
           {imageUrls.map((value, key) => (
-            <Grid item xs={12} sm={12} md={4}>
-              <div className={classes.card} >
+            <Grid item xs={12} sm={12} md={3}>
+              <div className={classes.card}>
                 {" "}
                 <div
                   style={{
@@ -145,7 +144,7 @@ const Architecture = () => {
                 >
                   <img
                     className={classes.dispImage}
-                    src={value} 
+                    src={value}
                     // title="Bangladesh College of Physicians and Surgeons"
                     onClick={() => {
                       history("/ArchitectureDesign?proj=" + name[key]?.id);

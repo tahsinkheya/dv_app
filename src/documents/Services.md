@@ -5,7 +5,7 @@ Our architectural services begin with an analysis of client’s needs and object
 of a project that meets the intended functional,economical and aesthetical requirements. Our team
 develops Design concepts; translates them into conventional working drawings and specifications; then 
 ready for construction. We can also assist clients in the bidding process and construction management 
-to meet quality, time and cost
+to meet quality, time and cost.
 
 **2. Interior Design**
 
