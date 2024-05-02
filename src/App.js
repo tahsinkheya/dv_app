@@ -14,6 +14,7 @@ import Architecture from "./pages/Architecture";
 import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import Interior from "./pages/Interior";
+import Home from "./pages/Home";
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Career" element={<Career />} />
         <Route path="/Interior" element={<Interior />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Home" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
