@@ -142,34 +142,14 @@ const Services = () => {
                     ></img>
                   </Grid>
                 </Grid>
+
                 <Grid
                   container
-                  direction={window.innerWidth > 700 ? "row" : "column-reverse"}
+                  direction={window.innerWidth > 700 ? "row" : "column"}
                   justifyContent="center"
                   alignItems="stretch"
                   style={{ paddingTop: "1rem" }}
                 >
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    style={{
-                      display: "flex",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img
-                      style={{
-                        width: window.innerWidth > 700 ? "20vw" : "80vw",
-                      }}
-                      src={info.int}
-                    ></img>
-                  </Grid>
                   <Grid
                     item
                     xs={12}
@@ -201,6 +181,28 @@ const Services = () => {
                       itself. Our services in this area are particular and
                       specialized.
                     </Typography>
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={6}
+                    md={6}
+                    xl={6}
+                    style={{
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: window.innerWidth > 700 ? "20vw" : "80vw",
+                      }}
+                      src={info.arch}
+                    ></img>
                   </Grid>
                 </Grid>
 
@@ -263,34 +265,14 @@ const Services = () => {
                     ></img>
                   </Grid>
                 </Grid>
+
                 <Grid
                   container
-                  direction={window.innerWidth > 700 ? "row" : "column-reverse"}
+                  direction="row"
                   justifyContent="center"
                   alignItems="stretch"
                   style={{ paddingTop: "1rem" }}
                 >
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    style={{
-                      display: "flex",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img
-                      style={{
-                        width: window.innerWidth > 700 ? "20vw" : "80vw",
-                      }}
-                      src={info.int}
-                    ></img>
-                  </Grid>
                   <Grid
                     item
                     xs={12}
@@ -323,8 +305,30 @@ const Services = () => {
                       management. On special request, the team can provide
                       building management and maintenance also.
                     </Typography>
+                  </Grid>{" "}
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={6}
+                    md={6}
+                    xl={6}
+                    style={{
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: window.innerWidth > 700 ? "20vw" : "80vw",
+                      }}
+                      src={info.int}
+                    ></img>
                   </Grid>
                 </Grid>
+
                 <Grid
                   container
                   direction="row"
@@ -387,34 +391,14 @@ const Services = () => {
                     ></img>
                   </Grid>
                 </Grid>
+
                 <Grid
                   container
-                  direction={window.innerWidth > 700 ? "row" : "column-reverse"}
+                  direction="row"
                   justifyContent="center"
                   alignItems="stretch"
                   style={{ paddingTop: "1rem" }}
                 >
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    lg={6}
-                    md={6}
-                    xl={6}
-                    style={{
-                      display: "flex",
-                      textAlign: "center",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img
-                      style={{
-                        width: window.innerWidth > 700 ? "20vw" : "80vw",
-                      }}
-                      src={info.int}
-                    ></img>
-                  </Grid>
                   <Grid
                     item
                     xs={12}
@@ -454,10 +438,32 @@ const Services = () => {
                       the client. The EPCM contractor may or may not undertake
                       actual site work. Design Vision Associates Ltd. is
                       experienced with EPC/ EPCM kind of works. We have
-                      completed quite a few EPC/ EPCM works
+                      completed quite a few EPC/ EPCM works{" "}
                     </Typography>
+                  </Grid>{" "}
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={6}
+                    md={6}
+                    xl={6}
+                    style={{
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      style={{
+                        width: window.innerWidth > 700 ? "20vw" : "80vw",
+                      }}
+                      src={info.int}
+                    ></img>
                   </Grid>
                 </Grid>
+
                 <Grid
                   container
                   direction="row"
