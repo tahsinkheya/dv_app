@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import firestore from "../../common/firebaseConf";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Typography from "@mui/material/Typography";
+
 import "../../common/display.css";
 
-import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-cube";
-import "swiper/css/pagination";
-import { Grid } from "@mui/material";
 import ProjSlider from "../../common/ProjSlider";
-function AcousticMain() {
+function InteriorMain() {
   let id = new URLSearchParams(window.location.search).get("proj");
   const [simProj, setSimProj] = useState([]);
   const [loading, setLoading] = useState([]);
@@ -27,7 +20,7 @@ function AcousticMain() {
     let imgList = [];
     //get images, subtitle, title, locaiotn, market, size, client, deatailed title,detailed subtitle
     await firestore
-      .collectionGroup("images")
+      .collectionGroup("iimages")
       .get()
       .then((querySnapshot) => {
         console.log(querySnapshot.docs[0].data());
@@ -36,8 +29,9 @@ function AcousticMain() {
           // console.log(doc)s
           console.log(doc.ref.parent.parent.id);
           if (id === doc.ref.parent.parent.id) {
-            console.log(doc.data());
-            imgList = Object.values(doc.data());
+            let allData = doc.data();
+            imgList = Object.values(allData);
+            imgList.pop();
             // for (let i = 0; i < doc.data(); i++) {
             //   imgList.push(doc.data()[i]);
             //   console.log(doc.data()[i])
@@ -49,7 +43,7 @@ function AcousticMain() {
         setImages(imgList);
       });
     await firestore
-      .collection("Acoustics")
+      .collection("Interior")
       .doc(id)
       .get()
       .then((doc) => {
@@ -58,7 +52,7 @@ function AcousticMain() {
         setLoading(false);
         let simItem = [];
         firestore
-          .collection("Acoustics")
+          .collection("Interior")
           .get()
           .then((querySnapshot) => {
             querySnapshot.docs.forEach((newDoc) => {
@@ -74,4 +68,4 @@ function AcousticMain() {
   return <ProjSlider images={images} proj={proj} />;
 }
 
-export default AcousticMain;
+export default InteriorMain;

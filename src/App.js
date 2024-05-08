@@ -15,6 +15,7 @@ import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import Interior from "./pages/Interior";
 import Home from "./pages/Home";
+import InteriorMain from "./components/interior/InteriorMain";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,8 @@ function App() {
         <Route path="/Acoustic" element={<Acoustic />} />
         <Route path="/Architecture" element={<Architecture />} />
         <Route path="/ArchitectureDesign" element={<ArchitectureMain />} />
+        <Route path="/InteriorDesign" element={<InteriorMain />} />
+
         <Route path="/AcousticDesign" element={<AcousticMain />} />
         <Route path="/People" element={<People />} />
         <Route path="/Career" element={<Career />} />

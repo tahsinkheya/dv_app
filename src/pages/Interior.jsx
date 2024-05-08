@@ -149,7 +149,7 @@ const Interior = () => {
                     src={value}
                     // title="Bangladesh College of Physicians and Surgeons"
                     onClick={() => {
-                      history("/ArchitectureDesign?proj=" + name[key]?.id);
+                      history("/InteriorDesign?proj=" + name[key]?.id);
                     }}
                   ></img>
                 </div>
