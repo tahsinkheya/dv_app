@@ -1,13 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import ImageWithTextText from "../common/ImageWithText";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Divider, Grid, Typography, Button } from "@mui/material";
+import "../common/styles/style.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 export default function Home() {
+  const [isHoveredArc, setIsHoveredArc] = useState(false);
+  const [isHoveredInt, setIsHoveredInt] = useState(false);
+  const [isHoveredAcc, setIsHoveredAcc] = useState(false);
   return (
     <div>
       {" "}
@@ -17,45 +22,83 @@ export default function Home() {
         }
         text={"Featured Work"}
       />{" "}
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        spacing={1}
-        style={{ padding: "4rem 0rem 4rem 0rem", backgroundColor: "#F2F3F4" }}
-      >
-        <Grid item xs={false} sm={false} md={1} lg={1}></Grid>
-        <Grid item xs={12} sm={12} md={2.67} lg={2.67}>
-          <img
-            style={{ width: "100%" }}
-            src={
-              "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/A5%2FGCCN.jpg?alt=media&token=2c4a24e0-b5bc-42ee-b1bf-79b3e0926028"
-            }
-          ></img>
-        </Grid>
+      <div className="container">
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={1}
+          style={{ padding: "4rem 0rem 4rem 0rem", backgroundColor: "#F2F3F4" }}
+        >
+          <Grid item xs={false} sm={false} md={1} lg={1}></Grid>
 
-        <Grid item xs={12} sm={12} md={2.67} lg={2.67}>
-          <img
-            style={{ width: "100%" }}
-            src={
-              "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/R12%2FWELL%20FOOD.jpg?alt=media&token=94c820cd-1764-4ff2-9d37-16074fb23e65"
-            }
-          />
-        </Grid>
+          <Grid item xs={12} sm={12} md={2.67} lg={2.67}>
+            <div
+              className="image-container"
+              onMouseEnter={() => setIsHoveredArc(true)}
+              onMouseLeave={() => setIsHoveredArc(false)}
+            >
+              <img
+                style={{ width: "100%", opacity: isHoveredArc ? 0.8 : 1 }}
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/A5%2FGCCN.jpg?alt=media&token=2c4a24e0-b5bc-42ee-b1bf-79b3e0926028"
+                }
+              ></img>
+              {isHoveredArc && (
+                <div className="text-animation">
+                  Architectural Designs
+                  <Divider style={{ backgroundColor: "white" }} />
+                </div>
+              )}
+            </div>
+          </Grid>
 
-        <Grid item xs={12} sm={12} md={2.67} lg={2.67}>
-          <img
-            style={{ width: "100%" }}
-            src={
-              "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/R12%2FWELL%20FOOD.jpg?alt=media&token=94c820cd-1764-4ff2-9d37-16074fb23e65"
-            }
-          />
-        </Grid>
+          <Grid item xs={12} sm={12} md={2.67} lg={2.67}>
+            <div
+              className="image-container"
+              onMouseEnter={() => setIsHoveredInt(true)}
+              onMouseLeave={() => setIsHoveredInt(false)}
+            >
+              <img
+                style={{ width: "100%", opacity: isHoveredInt ? 0.8 : 1 }}
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/R12%2FWELL%20FOOD.jpg?alt=media&token=94c820cd-1764-4ff2-9d37-16074fb23e65"
+                }
+              />
+              {isHoveredInt && (
+                <div className="text-animation">
+                  Interior Designs
+                  <Divider style={{ backgroundColor: "white" }} />
+                </div>
+              )}
+            </div>
+          </Grid>
 
-        <Grid item xs={false} sm={false} md={1} lg={1}></Grid>
+          <Grid item xs={12} sm={12} md={2.67} lg={2.67}>
+            <div
+              className="image-container"
+              onMouseEnter={() => setIsHoveredAcc(true)}
+              onMouseLeave={() => setIsHoveredAcc(false)}
+            >
+              <img
+                style={{ width: "100%", opacity: isHoveredAcc ? 0.8 : 1 }}
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/dv-app-a159c.appspot.com/o/R12%2FWELL%20FOOD.jpg?alt=media&token=94c820cd-1764-4ff2-9d37-16074fb23e65"
+                }
+              />
+              {isHoveredAcc && (
+                <div className="text-animation">
+                  Acoustic Solutions
+                  <Divider style={{ backgroundColor: "white" }} />
+                </div>
+              )}
+            </div>
+          </Grid>
 
-        {/* <Grid item xs={12} sm={12} md={4}>
+          <Grid item xs={false} sm={false} md={1} lg={1}></Grid>
+
+          {/* <Grid item xs={12} sm={12} md={4}>
           <img
             className={classes.dispImage}
             src={image2}
@@ -103,8 +146,9 @@ export default function Home() {
             src={image8}
             title="University Of Science & Technology Chattogram"
           ></img> */}
-        {/* </Grid> */}
-      </Grid>
+          {/* </Grid> */}
+        </Grid>
+      </div>
       <Divider
         style={{
           margin: "0rem 10rem 0rem 10rem",
