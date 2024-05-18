@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/dv_app/static/css/main.915787db.css",
+    "main.js": "/dv_app/static/js/main.e07350e8.js",
+    "static/js/708.aca3c513.chunk.js": "/dv_app/static/js/708.aca3c513.chunk.js",
+    "static/media/Montserrat-VariableFont_wght.ttf": "/dv_app/static/media/Montserrat-VariableFont_wght.7e687123cd4528224ce5.ttf",
+    "static/media/DV LOGO 1-01.png": "/dv_app/static/media/DV LOGO 1-01.fabf7197d3886a0decd7.png",
+    "static/media/Firm.md": "/dv_app/static/media/Firm.b3b7527695bc4ede4d37.md",
+    "index.html": "/dv_app/index.html",
+    "main.915787db.css.map": "/dv_app/static/css/main.915787db.css.map",
+    "main.e07350e8.js.map": "/dv_app/static/js/main.e07350e8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.915787db.css",
+    "static/js/main.e07350e8.js"
+  ]
+}
