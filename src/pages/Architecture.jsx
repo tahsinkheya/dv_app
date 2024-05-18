@@ -6,6 +6,11 @@ import firestore from "../common/firebaseConf";
 import Skeleton from "@mui/material/Skeleton";
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 const useStyles = makeStyles(() => ({
   readMore: {
     marginTop: "0px",
@@ -53,9 +58,15 @@ const Architecture = () => {
   // const imageRef = firestore.collection("Acoustics");
   const [imageUrls, setImages] = useState([]);
   const [isLoading, setLoading] = useState(false);
+
   const [name, setName] = useState([]);
   const classes = useStyles();
   let history = useNavigate();
+  const [category, setCat] = React.useState("");
+
+  const handleChange = (event) => {
+    setCat(event.target.value);
+  };
   useEffect(() => {
     setLoading(true);
     console.log("jsndjfk");
@@ -116,6 +127,28 @@ const Architecture = () => {
         <Typography variant="overline" style={{ fontSize: "2rem" }}>
           Architecture{" "}
         </Typography>
+        {!isLoading && (
+          <Box sx={{ minWidth: 300 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={category}
+                label="Cateegory"
+                onChange={handleChange}
+              >
+                <MenuItem value={1}>All</MenuItem>
+                <MenuItem value={2}>Residential</MenuItem>
+                <MenuItem value={3}>Comercial</MenuItem>
+                <MenuItem value={4}>Hospital</MenuItem>
+                <MenuItem value={5}>Hospitality</MenuItem>
+                <MenuItem value={6}>Foreign</MenuItem>
+                <MenuItem value={7}>Government</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        )}
         <img
           style={{ height: "5rem", display: isLoading ? "inline" : "none" }}
           src={
@@ -127,6 +160,7 @@ const Architecture = () => {
           direction="row"
           justifyContent="center"
           alignItems="center"
+          style={{ paddingTop: "3rem" }}
         >
           {imageUrls.map((value, key) => (
             <Grid item xs={12} sm={12} md={3}>

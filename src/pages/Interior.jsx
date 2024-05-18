@@ -5,8 +5,12 @@ import { useNavigate } from "react-router-dom";
 import firestore from "../common/firebaseConf";
 import Skeleton from "@mui/material/Skeleton";
 import { Typography } from "@mui/material";
-import { useSpring, animated } from "@react-spring/web";
 import { useEffect } from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 const useStyles = makeStyles(() => ({
   readMore: {
     marginTop: "0px",
@@ -57,6 +61,11 @@ const Interior = () => {
   const [name, setName] = useState([]);
   const classes = useStyles();
   let history = useNavigate();
+  const [category, setCat] = React.useState("All");
+
+  const handleChange = (event) => {
+    setCat(event.target.value);
+  };
   useEffect(() => {
     setLoading(true);
     console.log("jsndjfk");
@@ -87,13 +96,25 @@ const Interior = () => {
       .get()
       .then((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
-          nameList.push({ name: doc.data().name, id: doc.id });
+          nameList.push({
+            name: doc.data().name,
+            id: doc.id,
+            type: doc.data().type,
+          });
         });
         setLoading(false);
         setName(nameList);
       });
   };
-
+  const getImagesToshow = () => {
+    if (category === "All") {
+      return imageUrls;
+    } else {
+      return imageUrls.filter((imageUrl, index) => {
+        return name[index].type === category;
+      });
+    }
+  };
   return (
     <div
       style={{
@@ -117,6 +138,28 @@ const Interior = () => {
         <Typography variant="overline" style={{ fontSize: "2rem" }}>
           Interior{" "}
         </Typography>
+        {!isLoading && (
+          <Box sx={{ minWidth: 300 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={category}
+                label="Cateegory"
+                onChange={handleChange}
+              >
+                <MenuItem value={"All"}>All</MenuItem>
+                <MenuItem value={"Residential"}>Residential</MenuItem>
+                <MenuItem value={"Comercial"}>Comercial</MenuItem>
+                <MenuItem value={"Hospital"}>Hospital</MenuItem>
+                <MenuItem value={"Hospitality"}>Hospitality</MenuItem>
+                <MenuItem value={"Foreign"}>Foreign</MenuItem>
+                <MenuItem value={"Government"}>Government</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        )}
         <img
           style={{ height: "5rem", display: isLoading ? "inline" : "none" }}
           src={
@@ -128,13 +171,14 @@ const Interior = () => {
           direction="row"
           justifyContent="center"
           alignItems="center"
-          spacing={1}
+          // spacing={1}
+          style={{ paddingTop: "2rem" }}
         >
-          {imageUrls.map((value, key) => (
-            <Grid item xs={12} sm={12} md={3}>
+          {getImagesToshow().map((value, key) => (
+            <Grid item xs={12} sm={12} md={3} style={{ width: "100vw" }}>
               <div className={classes.card}>
                 {" "}
-                <div
+                {/* <div
                   style={{
                     // padding:
                     //   window.innerWidth > 700 ? "1rem 1rem 0rem 1rem" : "0rem",
@@ -143,16 +187,16 @@ const Interior = () => {
                     justifyContent: "center",
                     alignItems: "center",
                   }}
-                >
-                  <img
-                    className={classes.dispImage}
-                    src={value}
-                    // title="Bangladesh College of Physicians and Surgeons"
-                    onClick={() => {
-                      history("/InteriorDesign?proj=" + name[key]?.id);
-                    }}
-                  ></img>
-                </div>
+                > */}
+                <img
+                  className={classes.dispImage}
+                  src={value}
+                  // title="Bangladesh College of Physicians and Surgeons"
+                  onClick={() => {
+                    history("/InteriorDesign?proj=" + name[key]?.id);
+                  }}
+                ></img>
+                {/* </div> */}
                 <div className="overlay" style={{ paddingTop: "0.3rem" }}>
                   <div className="text">{name[key]?.name}</div>
                 </div>
